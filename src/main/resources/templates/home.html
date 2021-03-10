@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>첫 화면</title>
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 0px auto;
+        }
+
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-c3ow {
+            border-color: inherit;
+            text-align: center;
+            vertical-align: top
+        }
+
+        .tg .tg-0pky {
+            border-color: inherit;
+            text-align: left;
+            vertical-align: top
+        }
+
+        .tg .tg-0lax {
+            text-align: left;
+            vertical-align: top
+        }
+        .di {
+            margin: 10px;
+            text-align: center;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+<table class="tg">
+    <thead>
+    <tr>
+        <th class="tg-c3ow">#</th>
+        <th class="tg-0pky">작성자</th>
+        <th class="tg-0pky">제목</th>
+        <th class="tg-0pky">내용</th>
+        <th class="tg-0pky">작성시간</th>
+        <th class="tg-0pky">수정시간</th>
+        <th class="tg-0pky">조회수</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="content : ${contents}">
+        <td class="tg-0lax" th:text="${content.getId()}"></td>
+        <td class="tg-0lax" th:text="${content.getName()}"></td>
+        <td class="tg-0lax" th:text="${content.getTitle()}"></td>
+        <td class="tg-0lax" th:text="${content.getContent()}"></td>
+        <td class="tg-0lax" th:text="${content.getWriteTime()}"></td>
+        <td class="tg-0lax" th:text="${content.getModifyTime()}"></td>
+        <td class="tg-0lax" th:text="${content.getViewCount()}"></td>
+    </tr>
+    </tbody>
+</table>
+<div class="di">
+    <a href="/write">글쓰기</a>
+</div>
+</body>
+</html>`
+

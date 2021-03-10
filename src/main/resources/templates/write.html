@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 0px auto;
+        }
+
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg .tg-4n2o {
+            border-color: #c0c0c0;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: top
+        }
+
+        .tg .tg-0pky {
+            border-color: inherit;
+            text-align: center;
+            vertical-align: top
+        }
+
+        .tg .tg-0lax {
+            text-align: center;
+            vertical-align: top
+        }
+    </style>
+</head>
+<body>
+<form action="/write" method="post" th:object="${userDto}">
+    <table class="tg">
+        <tbody>
+        <tr>
+            <td class="tg-0pky">작성자 :</td>
+            <td class="tg-0pky">
+                <input type="text" placeholder="작성자를 입력하세요." autofocus name="name">
+            </td>
+        </tr>
+        <tr>
+            <td class="tg-0pky">제목 :</td>
+            <td class="tg-0pky">
+                <input type="text" placeholder="제목을 입력하세요." name="title">
+            </td>
+        </tr>
+        <tr>
+            <td class="tg-0lax">내용 :</td>
+            <td class="tg-0lax">
+                <input type="text" placeholder="글 내용을 입력하세요." name="content">
+            </td>
+        </tr>
+        <tr>
+            <td class="tg-0lax" colspan="2">
+                <input type="submit" value="저장하기">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
