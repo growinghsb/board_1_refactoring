@@ -17,7 +17,7 @@ import static java.time.format.DateTimeFormatter.ofPattern;
 @Transactional// 항상 엔티티매니저는 트랜잭션 단위 안에서 동작하기 때문에 트랜잭션이 있어야 한다.
 public class UserService { // 테스트 코드 작성할 것
 
-    //네이밍 할 때 기술이 먼저 오면 안된다. 기술을 의식하고 코딩하진 않기 때문
+    //네이밍 할 때 기술이 먼저 오면 안된다. 기술을 의식하고 코딩하진 않기 때문이다.
     private final JpaUserRepository jpaUserRepository;
 
     public Long save(UserDto dto) {
