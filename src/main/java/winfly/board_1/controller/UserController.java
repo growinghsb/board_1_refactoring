@@ -6,7 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import winfly.board_1.controller.dto.UserDto;
+import winfly.board_1.entity.User;
 import winfly.board_1.service.UserService;
 
 @Controller
@@ -34,4 +36,27 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("content/detail")
+    public String detail(@RequestParam("id") Long id, Model model) {
+        User user = userService.viewCountUp(id);
+        UserDto dto = new UserDto();
+        dto.setName(user.getName());
+        dto.setTitle(user.getTitle());
+        dto.setContent(user.getContent());
+        model.addAttribute("content", dto);
+        model.addAttribute("id", user.getId());
+        return "detail";
+    }
+
+    @PostMapping("content/detail")
+    public String detail(@RequestParam("id") Long id, UserDto dto) {
+        userService.modify(dto, id);
+        return "redirect:/";
+    }
+
+    @GetMapping("delete")
+    public String delete(@RequestParam("id") Long id){
+        userService.delete(id);
+        return "redirect:/";
+    }
 }

@@ -49,6 +49,7 @@
             text-align: left;
             vertical-align: top
         }
+
         .di {
             margin: 10px;
             text-align: center;
@@ -73,11 +74,18 @@
     <tr th:each="content : ${contents}">
         <td class="tg-0lax" th:text="${content.getId()}"></td>
         <td class="tg-0lax" th:text="${content.getName()}"></td>
-        <td class="tg-0lax" th:text="${content.getTitle()}"></td>
-        <td class="tg-0lax" th:text="${content.getContent()}"></td>
+        <td class="tg-0lax">
+            <a href="#" th:href="@{/content/detail(id=${content.getId()})}" th:text="${content.getTitle()}"></a>
+        </td>
+        <td class="tg-0lax">
+            <a href="#" th:href="@{/content/detail(id=${content.getId()})}" th:text="${content.getContent()}"></a>
+        </td>
         <td class="tg-0lax" th:text="${content.getWriteTime()}"></td>
         <td class="tg-0lax" th:text="${content.getModifyTime()}"></td>
         <td class="tg-0lax" th:text="${content.getViewCount()}"></td>
+        <td class="tg-0lax">
+            <a href="#" th:href="@{/delete/(id = ${content.getId()})}" role="button">삭제</a>
+        </td>
     </tr>
     </tbody>
 </table>

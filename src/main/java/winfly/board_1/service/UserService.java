@@ -48,9 +48,10 @@ public class UserService { // 테스트 코드 작성할 것
         user.setModifyTime(now().format(ofPattern("yyyy-MM-dd HH:mm:ss")));
     }
 
-    public void viewCountUp(Long id) {
+    public User viewCountUp(Long id) {
         User user = jpaUserRepository.findOne(id);
         user.setViewCount(user.getViewCount() + 1);
+        return user;
     }
 
     public void delete(Long id) {

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>글쓰기</title>
+    <title>게시글 상세보기</title>
     <style type="text/css">
         .tg {
             border-collapse: collapse;
@@ -17,7 +17,7 @@
             font-family: Arial, sans-serif;
             font-size: 14px;
             overflow: hidden;
-            padding: 10px 5px;
+            padding: 10px 6px;
             word-break: normal;
         }
 
@@ -29,54 +29,54 @@
             font-size: 14px;
             font-weight: normal;
             overflow: hidden;
-            padding: 10px 5px;
+            padding: 10px 6px;
             word-break: normal;
         }
 
-        .tg .tg-4n2o {
-            border-color: #c0c0c0;
-            font-weight: bold;
+        .tg .tg-9wq8 {
+            border-color: inherit;
+            text-align: center;
+            vertical-align: middle
+        }
+
+        .tg .tg-c3ow {
+            border-color: inherit;
             text-align: center;
             vertical-align: top
         }
 
         .tg .tg-0pky {
             border-color: inherit;
-            text-align: center;
-            vertical-align: top
-        }
-
-        .tg .tg-0lax {
-            text-align: center;
+            text-align: left;
             vertical-align: top
         }
     </style>
 </head>
 <body>
-<form action="/write" method="post" th:object="${userDto}">
+<form th:action="@{/content/detail(id=${id})}" th:object="${content}" method="post">
     <table class="tg">
         <tbody>
         <tr>
-            <td class="tg-0pky">작성자 :</td>
+            <td class="tg-c3ow">작성자 :</td>
             <td class="tg-0pky">
-                <input type="text" placeholder="작성자를 입력하세요." autofocus name="name">
+                <input type="text" name="name" th:value="${content.getName()}">
             </td>
         </tr>
         <tr>
-            <td class="tg-0pky">제목 :</td>
+            <td class="tg-c3ow">제목 :</td>
             <td class="tg-0pky">
-                <input type="text" placeholder="제목을 입력하세요." name="title">
+                <input type="text" name="title" th:value="${content.getTitle()}">
             </td>
         </tr>
         <tr>
-            <td class="tg-0lax">내용 :</td>
-            <td class="tg-0lax">
-                <input type="text" placeholder="글 내용을 입력하세요." name="content">
+            <td class="tg-c3ow">내용 :</td>
+            <td class="tg-0pky">
+                <input type="text" name="content" th:value="${content.getContent()}">
             </td>
         </tr>
         <tr>
-            <td class="tg-0lax" colspan="2">
-                <input type="submit" value="저장하기">
+            <td class="tg-c3ow" colspan="2">
+                <input type="submit" value="수정하기">
                 <a href="/">목록으로</a>
             </td>
         </tr>
