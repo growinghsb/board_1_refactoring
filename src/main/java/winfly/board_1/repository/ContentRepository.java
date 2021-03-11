@@ -1,18 +1,18 @@
 package winfly.board_1.repository;
 
 
-import winfly.board_1.entity.User;
+import winfly.board_1.entity.Content;
 
 import java.util.List;
 
-public interface UserRepository {
+public interface ContentRepository {
 
-    public abstract Long save(User user);
+    public abstract Long save(Content content);
 
-    public abstract User findOne(Long id);
+    public abstract Content findOne(Long id);
 
-    public abstract List<User> findAll();
+    public abstract List<Content> findAll();
 
-    public abstract void delete(User user);
+    public abstract void delete(Content content);
 
 }

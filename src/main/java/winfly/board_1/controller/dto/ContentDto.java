@@ -5,10 +5,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserDto {
+public class ContentDto {
 
     private String name;
     private String title;
     private String content;
+    private String writeTime;
+    private String modifyTime;
     private int viewCount;
 }

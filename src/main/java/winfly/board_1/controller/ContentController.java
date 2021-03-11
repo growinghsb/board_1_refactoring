@@ -7,56 +7,56 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import winfly.board_1.controller.dto.UserDto;
-import winfly.board_1.entity.User;
-import winfly.board_1.service.UserService;
+import winfly.board_1.controller.dto.ContentDto;
+import winfly.board_1.entity.Content;
+import winfly.board_1.service.ContentService;
 
 @Controller
 @RequiredArgsConstructor
 @Slf4j
-public class UserController {
+public class ContentController {
 
-    private final UserService userService;
+    private final ContentService contentService;
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("contents", userService.findAll());
+        model.addAttribute("contents", contentService.findAll());
         return "home";
     }
 
     @GetMapping("/write")
     public String write(Model model) {
-        model.addAttribute("userDto", new UserDto());
+        model.addAttribute("contentDto", new ContentDto());
         return "write";
     }
 
     @PostMapping("write")
-    public String write(UserDto dto) {
-        userService.save(dto);
+    public String write(ContentDto dto) {
+        contentService.save(dto);
         return "redirect:/";
     }
 
     @GetMapping("content/detail")
     public String detail(@RequestParam("id") Long id, Model model) {
-        User user = userService.viewCountUp(id);
-        UserDto dto = new UserDto();
-        dto.setName(user.getName());
-        dto.setTitle(user.getTitle());
-        dto.setContent(user.getContent());
+        Content content = contentService.viewCountUp(id);
+        ContentDto dto = new ContentDto();
+        dto.setName(content.getName());
+        dto.setTitle(content.getTitle());
+        dto.setContent(content.getContent());
         model.addAttribute("content", dto);
-        model.addAttribute("id", user.getId());
+        model.addAttribute("id", content.getId());
         return "detail";
     }
 
     @PostMapping("content/detail")
-    public String detail(@RequestParam("id") Long id, UserDto dto) {
-        userService.modify(dto, id);
+    public String detail(@RequestParam("id") Long id, ContentDto dto) {
+        contentService.modify(dto, id);
         return "redirect:/";
     }
 
     @GetMapping("delete")
     public String delete(@RequestParam("id") Long id){
-        userService.delete(id);
+        contentService.delete(id);
         return "redirect:/";
     }
 }
